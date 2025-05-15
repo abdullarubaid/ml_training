@@ -5,6 +5,10 @@ import os
 app = Flask(__name__)
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+@app.route("/")
+def home():
+    return "ChatGPT DevOps Assistant is running. Use the /chat endpoint with POST requests."
+    
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
